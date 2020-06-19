@@ -6,11 +6,40 @@
 
 body{
     font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url('img.jpg');
+    background-size: cover;
+    background-position: top center;
+
 }
 
-.input{
+.app-wrap{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     text-align: center;
     margin: 100px 0;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 15px 15px;
+}
+
+header input{
+    width: 100%;
+    max-width: 280px;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 16px 0px 16px 0px;
+    border-bottom: 3px solid black;
+    color: black;
+    font-size: 20px;
+    font-weight: 300;
+    transition: 0.2s ease-out;
 }
 
 input[type="text"]{
@@ -36,6 +65,11 @@ input[type="submit"]{
     border-radius: 2px;
 }
 
-.display{
-    text-align: center;
+main{
+    flex: 1 1 100%;
+    padding: 25px 25px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5px;
 }
