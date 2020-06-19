@@ -20,7 +20,7 @@ input[type="text"]{
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 20px;
-    border: none;
+    border: solid;
     border-radius: 2px;
     padding: 10px 10px;
 }
@@ -32,7 +32,7 @@ input[type="submit"]{
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 20px;
-    border: none;
+    border: solid;
     border-radius: 2px;
 }
 
