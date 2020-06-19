@@ -1,23 +1,27 @@
-var button = document.querySelector('.button')
-var inputValue = document.querySelector('.inputValue')
-var name = document.querySelector('.name')
-var descrp = document.querySelector('.description')
-var temp = document.querySelector('.temp')
+const api = {
+    key: "5591d25117b0ee81c97022c7d521410e",
+    baseurl: "http://api.openweathermap.org/data/2.5/"
+}
 
-button.addEventListener('click', function(){
-    fetch('http://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&appid=5591d25117b0ee81c97022c7d521410e')
-    .then(response => response.json())
-    .then(data => {
-        var nameValue = data['name'];
-        var tempValue = data['main']['temp'];
-        var descrpValue = data['weather'][0]['description'];
+const inputValue = document.querySelector('.inputValue');
+inputValue.addEventListener('keypress', setQuery);
 
-        name.innerHTML = nameValue;
-        temp.innerHTML = tempValue;
-        descrp.innerHTML = descrpValue;
-    })
+function setQuery (evt) {
+    if (evt.keyCode == 13) {
+        getResults(inputValue.value);
+    }
+}
 
-    .catch(Error => alert("Invalid"))
-})
+function getResults (query) {
+    fetch('${api.base}weather?q=${query}&units=metric&APPID=${api.key}')
+    .then(weather => {
+        return weather.json();
+    }).then(displayResults);
+}
+
+
+
+
+
 
 
