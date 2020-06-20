@@ -1,118 +1,76 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    background-image: url('img.jpg');
+    background-image: url('Default.jpg');
     background-size: cover;
-    background-position: top center;
-
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: white;
+    text-shadow: 2px 2px 1px black;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-
-
-.app-wrap{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    text-align: center;
-    margin: 100px 0;
+#weatherContainer{
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: 1px 1px 5px black;
+    padding: 50px;
+    border-radius: 10px;
+    position: absolute;
+    visibility: hidden;
 }
 
-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px 15px 15px;
+#weatherContainer h1{
+    margin: 5px;
+    font-size: 42px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-header input{
-    width: 100%;
-    max-width: 280px;
-    padding: 10px 15px;
+#searchContainer{
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#searchContainer input{
+    width: 200px;
+}
+
+#searchContainer button{
+    background-color: rgba(1, 159, 198);
+    width: 75px;
+}
+
+.searchControl{
+    box-shadow: 2px 2px 5px black;
     border: none;
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 16px 0px 16px 0px;
-    border-bottom: 3px solid black;
-    color: black;
-    font-size: 20px;
-    font-weight: 300;
-    transition: 0.2s ease-out;
+    border-radius: 5px;
+    padding: 5px;
 }
 
-input[type="text"]{
-    height: 50px;
-    width: 600px;
-    background: white;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    font-size: 20px;
-    border: solid;
-    border-radius: 2px;
-    padding: 10px 10px;
+#weatherMain{
+    display: block;
+    margin-bottom: 20px;
 }
 
-input[type="submit"]{
-    height: 50px;
-    width: 100px;
-    background: white;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    font-size: 20px;
-    border: solid;
-    border-radius: 2px;
+#weatherMain div{
+    display: inline-block;
 }
 
-main{
-    flex: 1 1 100%;
-    padding: 25px 25px 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 5px;
+#weatherDescriptionHeader{
+    font-size: 28px;
+    vertical-align: 50%;
 }
 
-.location .city{
-    color: blue;
-    font-size: 32px;
-    font-weight: 500;
-    margin-bottom: 5px;
+#temperature{
+    font-size: 30px;
+    vertical-align: 25%;
 }
 
-.location .date{
-    color: blue;
-    font-size: 16px;
-}
-
-.current .temp{
-    color: blue;
-    font-size: 32px;
-    font-weight: 700;
-    font-style: italic;
-    margin: 30px 0px;
-    text-shadow: 2px 10px rgba(0, 0, 0, 0.6);
-}
-
-.current .temp span{
-    font-weight: 500;
-}
-
-.current .weather{
-    color: blue;
-    font-size: 32px;
-    font-weight: 700;
-    font-style: italic;
-    margin-bottom: 15px;
-    text-shadow: 0px 3px rgba(0, 0, 0, 0.4);
-}
-
-.current .hi-low{
-    color: blue;
+.bottomDetails{
+    display: block;
     font-size: 24px;
-    font-weight: 500;
-    text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+    text-align: right;
+}
+
+hr{
+    margin-bottom: 20px;
 }
