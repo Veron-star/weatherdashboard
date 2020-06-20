@@ -1,7 +1,11 @@
 WeatherDashboard
 
-- Created weather forcast search platform using OpenWeather to retrive future, current and historical weather data.
-- 
+Simple weather search to view current weather data, wind speed, humidity and UV index which also include 5 days weather forcast and search history for each location.
+
+References:
+Open Weather Map API Documentation Resource: http://openweathermap.org
+Date/ time: moment.js
+Background images: https://www.pexels.com
 
 
 

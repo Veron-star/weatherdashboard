@@ -106,6 +106,47 @@ function setPositionForHeaderInfo() {
     weatherContainer.style.visibility = 'visible';
 }
 
+// cardRow.append(textDiv);
+//         getForecast(response.id);
+//     });
+
+function getForecast(city) {
+    //get 5 day forecast
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + city + "&APPID=7e4c7478cc7ee1e11440bf55a8358ec3&units=imperial";
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        //add container div for forecast cards
+        var newrow = $("<div>").attr("class", "forecast");
+        $("#earthforecast").append(newrow);
+
+        //loop through array response to find the forecasts for 15:00
+        for (var i = 0; i < response.list.length; i++) {
+            if (response.list[i].dt_txt.indexOf("15:00:00") !== -1) {
+                var newCol = $("<div>").attr("class", "one-fifth");
+                newrow.append(newCol);
+
+                var newCard = $("<div>").attr("class", "card text-white bg-primary");
+                newCol.append(newCard);
+
+                var cardHead = $("<div>").attr("class", "card-header").text(moment(response.list[i].dt, "X").format("MMM Do"));
+                newCard.append(cardHead);
+
+                var cardImg = $("<img>").attr("class", "card-img-top").attr("src", "https://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + "@2x.png");
+                newCard.append(cardImg);
+
+                var bodyDiv = $("<div>").attr("class", "card-body");
+                newCard.append(bodyDiv);
+
+                bodyDiv.append($("<p>").attr("class", "card-text").html("Temp: " + response.list[i].main.temp + " &#8457;"));
+                bodyDiv.append($("<p>").attr("class", "card-text").text("Humidity: " + response.list[i].main.humidity + "%"));
+            }
+        }
+    });
+}
+
+
 document.getElementById('searchBtn').addEventListener('click', () => {
     let searchTerm = document.getElementById('searchInput').value;
     if(searchTerm)
