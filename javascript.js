@@ -1,4 +1,4 @@
-let appId = '5591d25117b0ee81c97022c7d521410e';
+let appId = '74f6c0605d6d3bd672ec44e693f063f5';
 let units = 'metric';
 let searchMethod;
 
@@ -11,39 +11,38 @@ function getSearchMethod(searchTerm) {
 
 function searchWeather(searchTerm) {
     getSearchMethod(searchTerm);
-    fetch('http://api.openweathermap.org/data/2.5/weather?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}').then(result => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`).then(result => {
         return result.json();
     }).then(result => {
-        init(results);
+        init(result);
     })
 }
 
 function init(resultFromServer) {
+    console.log(resultFromServer);
     switch (resultFromServer.weather[0].main) {
         case 'Clear':
-        document.body.style.backgroundImage = 'url("Clear.jpg")';
-        break;
+            document.body.style.backgroundImage = 'url("clear.jpg")';
+            break;
 
-        case 'Cloudy':
-        document.body.style.backgroundImage = 'url("Cloudy.jpg")';
-        break;
+        case 'Clouds':
+            document.body.style.backgroundImage = 'url("cloudy.jpg")';
+            break;
 
         case 'Rain':
-        case 'Drizzle':
-        case 'Mist':
-        document.body.style.backgroundImage = 'url("Rain.jpg")';
-        break;
+            document.body.style.backgroundImage = 'url("rain.jpg")';
+            break;
 
         case 'Thunderstorm':
-        document.body.style.backgroundImage = 'url("Storm.jpg")';
-        break;
+            document.body.style.backgroundImage = 'url("storm.jpg")';
+            break;
 
         case 'Snow':
-        document.body.style.backgroundImage = 'url("Snow.jpg")';
-        break;
-
+            document.body.style.backgroundImage = 'url("snow.jpg")';
+            break;
+    
         default:
-        break;    
+            break;
     }
 
     let weatherDescriptionHeader = document.getElementById('weatherDescriptionHeader');
@@ -51,8 +50,8 @@ function init(resultFromServer) {
     let humidityElement = document.getElementById('humidity');
     let windSpeedElement = document.getElementById('windSpeed');
     let cityHeader = document.getElementById('cityHeader');
-    let weatherIcon = document.getElementById('documentIconImg');
-
+    let weatherIcon = document.getElementById('documentIconImg');    
+    
     weatherIcon.src = 'http://openweathermap.org/img/w/' + resultFromServer.weather[0].icon + '.png';
 
     let resultDescription = resultFromServer.weather[0].description;
@@ -62,21 +61,25 @@ function init(resultFromServer) {
     windSpeedElement.innerHTML = 'Winds at ' + Math.floor(resultFromServer.wind.speed) + ' m/s';
     cityHeader.innerHTML = resultFromServer.name;
     humidityElement.innerHTML = 'Humidity levels at ' + resultFromServer.main.humidity + '%';
+    
+    setPositionForHeaderInfo();
+}
+   
+function setPositionForHeaderInfo() {
+    let weatherContainer = document.getElementById('weatherContainer');
+    let weatherContainerHeight = weatherContainer.clientHeight;
+    let weatherContainerWidth = weatherContainer.clientWidth;
 
-
+    weatherContainer.style.left = 'calc(50% - ${weatherContainerWidth/2}px';
+    weatherContainer.style.top = 'calc(50% - ${weatherContainerHeight/1.3}px';
+    weatherContainer.style.visibility = 'visible';
 }
 
 document.getElementById('searchBtn').addEventListener('click', () => {
-    let searchTerm = document.getElementById('searchInput').nodeValue;
+    let searchTerm = document.getElementById('searchInput').value;
     if(searchTerm)
-    searchWeather(searchTerm);
+        searchWeather(searchTerm);
 })
-
-
-
-
-
-
 
 
 
@@ -91,51 +94,7 @@ document.getElementById('searchBtn').addEventListener('click', () => {
 // http://metric api.openweathermap.org/data/2.5/find?q=London&units=metric //metric convertion
 
 
-// const inputValue = document.querySelector('.inputValue');
-// inputValue.addEventListener('keypress', setQuery);
 
-// function setQuery (evt) {
-//     if (evt.keyCode == 13) {
-//         getResults(inputValue.value);
-//     }
-// }
-
-// function getResults (query) {
-//     fetch('${api.baseurl}weather?q=${query}&units=metric&APPID=${api.key}')
-//     .then(weather => {
-//         return weather.json();
-//     }).then(displayResults);
-// }
-
-// function displayResults (weather) {
-//     let city = document.querySelector('.location .city');
-//     city.innerText = '${weather.name}, ${weather.sys.country}';
-
-//     let now = new Date();
-//     let date = document.querySelector('.location .date');
-//     date.innerText = dateBuilder(now);
-
-//     let temp = document.querySelector('.current .temp');
-//     temp.innerHTML = '${Math.round(weather.main.temp)}<span></span>';
-
-//     let weather_el = document.querySelector('.current .weather');
-//     weather_el.innerText = weather.weather[0].main;
-
-//     let hilow = document.querySelector('.hi-low');
-//     hilow.innerText = '${Math.round(weather.main.temp_min)} c / ${Math.round(weather.main.temp_max)}c';
-// }
-
-// function dateBuilder (d) {
-//     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-//     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-//     let day = days[d.getDay()];
-//     let date = d.getDate();
-//     let month = months[d.getMonth()];
-//     let year = d.getFullYear();
-
-//     return '${day} ${date} ${month} ${year}';
-// }
 
 
 

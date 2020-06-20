@@ -1,5 +1,5 @@
-body{
-    background-image: url('Default.jpg');
+body {
+    background-image: url('default.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -8,22 +8,23 @@ body{
     font-family: 'Times New Roman', Times, serif;
 }
 
-#weatherContainer{
+#weatherContainer {
     background-color: rgba(0, 0, 0, 0.25);
     box-shadow: 1px 1px 5px black;
     padding: 50px;
     border-radius: 10px;
-    position: absolute;
+    position: relative;
     visibility: hidden;
+    margin-top: 80px;
 }
 
-#weatherContainer h1{
+#weatherContainer h1 {
     margin: 5px;
     font-size: 42px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-#searchContainer{
+#searchContainer {
     padding: 15px;
     position: absolute;
     top: 0;
@@ -65,7 +66,7 @@ body{
     vertical-align: 25%;
 }
 
-.bottomDetails{
+.bottom-details{
     display: block;
     font-size: 24px;
     text-align: right;
