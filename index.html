@@ -5,21 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
     <link rel="stylesheet" href="stylesheet.css">
+
 </head>
 <body>
+    <body class="bg-light">
+        <div class="container">
+            <div class="jumbotron">
+                <h1 class="text-center">
+                    <strong>
+                        <i class="img"></i>Weather Forcast
+                    </strong>
+                </h1>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="search">City or postcode</label>
+                        <input type="text" class="form-control" id="search-city">
+                    </div>
+                    <button type="submit" class="btn btn-default" id="btnSearch">Search</button>
+                    <button type="reset" class="btn btn-default" id="clear">Clear</button>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <h4>History</h4>
+                    <div id="recent-searches">
+                    </div>
+                </div>
+
+                <div class="col-8" id="current-data">
+                    <div id="currentDate"></div>
+                    <h3 class="city-data" id="city-name">
+                    <div class="city-data" id="city-date"></div>
+                    </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    
     <div class="app-wrap">
         <header>
             <input type="text" class="inputValue" placeholder="Search">
         </header>
         <main>
             <section class="location">
-                <div class="city"></div>
-                <div class="date"></div>
+                <div class="city">Perth, WA</div>
+                <div class="date">Friday 19 June 2020</div>
             </section>
             <div class="current">
-                <div class="temp"><span></span></div>
-                <div class="weather"></div>
-                <div class="icon"></div>
+                <div class="temp">10<span>c</span></div>
+                <div class="weather">Partly Cloudy</div>
+                <div class="hi-low">5c / 16c</div>
             </div>
         </main>
         
