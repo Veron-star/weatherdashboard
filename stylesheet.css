@@ -22,6 +22,14 @@ body {
     margin: 5px;
     font-size: 42px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+#weatherContainer h3 {
+    margin: 5px;
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
 }
 
 #searchContainer {
@@ -50,15 +58,18 @@ body {
 #weatherMain{
     display: block;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 #weatherMain div{
     display: inline-block;
+    text-align: center;
 }
 
 #weatherDescriptionHeader{
     font-size: 28px;
     vertical-align: 50%;
+    
 }
 
 #temperature{
@@ -69,7 +80,7 @@ body {
 .bottom-details{
     display: block;
     font-size: 24px;
-    text-align: right;
+    text-align: center;
 }
 
 hr{
