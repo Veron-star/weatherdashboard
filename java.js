@@ -22,7 +22,32 @@ $(document).ready(function() {
     clearHistory();
     clickHistory();
     currentLocationButton();
+
+    switch (resultFromServer.current[0].forcast) {
+      case 'Clear':
+          document.body.style.backgroundImage = 'url("clear.jpg")';
+          break;
+
+      case 'Clouds':
+          document.body.style.backgroundImage = 'url("cloudy.jpg")';
+          break;
+
+      case 'Rain':
+          document.body.style.backgroundImage = 'url("rain.jpg")';
+          break;
+
+      case 'Thunderstorm':
+          document.body.style.backgroundImage = 'url("storm.jpg")';
+          break;
+
+      case 'Snow':
+          document.body.style.backgroundImage = 'url("snow.jpg")';
+          break;
+  
+      default:
+          break;
   }
+}
 
   function search() {
     $('#search-button').on('click', function() {
@@ -55,36 +80,6 @@ $(document).ready(function() {
       $('#error-div').hide();
       $('#current-forecast').show();
       $('#five-day-forecast-container').show();
-
-      // background image
-
-function init(resultFromServer) {
-  console.log(resultFromServer);
-  switch (resultFromServer.weather[0].main) {
-      case 'Clear':
-          document.body.style.backgroundImage = 'url("clear.jpg")';
-          break;
-
-      case 'Clouds':
-          document.body.style.backgroundImage = 'url("cloudy.jpg")';
-          break;
-
-      case 'Rain':
-          document.body.style.backgroundImage = 'url("rain.jpg")';
-          break;
-
-      case 'Thunderstorm':
-          document.body.style.backgroundImage = 'url("storm.jpg")';
-          break;
-
-      case 'Snow':
-          document.body.style.backgroundImage = 'url("snow.jpg")';
-          break;
-  
-      default:
-          break;
-  }
-}
 
       var results = response;
       var name = results.name;
@@ -144,14 +139,12 @@ function init(resultFromServer) {
         method: 'GET'
       }).then(function(forecastResponse) {
         var forecastResults = forecastResponse;
+        var forecastDate = moment().format("dddd, MMMM Do YYYY, h:mm a");
         var forecastArr = [];
 
         for (var i = 5; i < 40; i += 8) {
           var forecastObj = {};
-          var forecastResultsDate = forecastResults.list[i].dt_txt;
-          var forecastDate = new Date(forecastResultsDate).toLocaleDateString(
-            'en-US'
-          );
+          var forecastDate = forecastResults.list[i].dt_txt;
           var forecastTemp = forecastResults.list[i].main.temp;
           var forecastHumidity = forecastResults.list[i].main.humidity;
           var forecastIcon = forecastResults.list[i].weather[0].icon;
@@ -175,7 +168,7 @@ function init(resultFromServer) {
           $('#date-' + (j + 1)).text(forecastArrDate);
           $('#weather-image-' + (j + 1)).attr('src', forecastIconURL);
           $('#temp-' + (j + 1)).text(
-            'Temp: ' + Math.floor(forecastArrTemp) + ' °F'
+            'Temp: ' + Math.floor(forecastArrTemp) + ' °C'
           );
           $('#humidity-' + (j + 1)).text(
             'Humidity: ' + forecastArrHumidity + '%'

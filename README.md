@@ -1,6 +1,6 @@
 WeatherDashboard
 
-Simple weather search to view current weather data, wind speed, humidity and UV index which also include 5 days weather forcast and search history for each location.
+Simple weather search to view current weather data, wind speed, humidity and UV index which also include 5 days weather forcast and search history for each location around the globe. 
 
 References:
 Open Weather Map API Documentation Resource: http://openweathermap.org
