@@ -56,6 +56,36 @@ $(document).ready(function() {
       $('#current-forecast').show();
       $('#five-day-forecast-container').show();
 
+      // background image
+
+function init(resultFromServer) {
+  console.log(resultFromServer);
+  switch (resultFromServer.weather[0].main) {
+      case 'Clear':
+          document.body.style.backgroundImage = 'url("clear.jpg")';
+          break;
+
+      case 'Clouds':
+          document.body.style.backgroundImage = 'url("cloudy.jpg")';
+          break;
+
+      case 'Rain':
+          document.body.style.backgroundImage = 'url("rain.jpg")';
+          break;
+
+      case 'Thunderstorm':
+          document.body.style.backgroundImage = 'url("storm.jpg")';
+          break;
+
+      case 'Snow':
+          document.body.style.backgroundImage = 'url("snow.jpg")';
+          break;
+  
+      default:
+          break;
+  }
+}
+
       var results = response;
       var name = results.name;
       var temperature = Math.floor(results.main.temp);
