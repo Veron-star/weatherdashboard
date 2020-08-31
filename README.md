@@ -11,3 +11,5 @@ Background images: https://www.pexels.com
 
 URL: https://veron-star.github.io/weatherdashboard/
 Repository: https://github.com/Veron-star/weatherdashboard
+
+![](/weatherdata.PNG)
